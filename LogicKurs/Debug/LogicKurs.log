@@ -1,2 +1,4 @@
 ﻿  Menu.cpp
+D:\lads c\LogicKurs\LogicKurs\Menu.cpp(58,6): warning C4101: n: неиспользованная локальная переменная
+D:\lads c\LogicKurs\LogicKurs\Menu.cpp(87,20): warning C4101: n: неиспользованная локальная переменная
   LogicKurs.vcxproj -> D:\lads c\LogicKurs\Debug\LogicKurs.exe

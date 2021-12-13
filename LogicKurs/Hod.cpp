@@ -93,10 +93,12 @@ El* put(int** M, int n, El* Q)
 	return Q;
 }
 
-void HZ(char** L, El* Q, int n)
+void HZ(char** L, El* Q, int n, int** M)
 {
 	int i = 0, j = 0, x = 1, y = 1, N = n*2+1, win = 0;
 	clock_t S, E = 0;
+	char name[31];
+	FILE* F;
 	
 	Q = del(Q);
 	L[N - 2][N - 2] = '@';
@@ -111,7 +113,7 @@ void HZ(char** L, El* Q, int n)
 		i = Q->v % n;
 		Q = del(Q);
 		S = clock();
-		while ((E-S)/CLK_TCK != 1)
+		while ((E-S)/CLK_TCK < 1)
 		{
 			E = clock();
 			if (_kbhit() == 1)
@@ -149,6 +151,13 @@ void HZ(char** L, El* Q, int n)
 					system("cls");
 					print_L(L, n * 2 + 1);
 				} break;
+				case 49:
+				{
+					system("cls");
+					printf("Введите название лабиринта:");
+					scanf("%30s", name);
+					save(name, n, M);
+				}break;
 				}
 		}
 		if (L[N - 2][N - 2] == '#')

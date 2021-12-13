@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="Hod.cpp" />
     <ClCompile Include="Lab.cpp" />
     <ClCompile Include="LogicKurs.cpp" />

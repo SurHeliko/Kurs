@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <locale.h>
+#include <math.h>
 
 struct Node
 {
@@ -31,5 +32,9 @@ int** gen(int n);
 char** Lgen(int** M, int n);
 void print_L(char** M, int n);
 El* put(int** M, int n, El* Q);
-void HZ(char** L, El* Q, int n);
-void dvigat();
+void HZ(char** L, El* Q, int n, int** M);
+void dvigat_1();
+void stand();
+void start();
+void save(char* lab, int n, int** M);
+int** read(int n);
