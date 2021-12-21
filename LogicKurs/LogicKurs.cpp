@@ -11,13 +11,13 @@ void start()
 	int** M = NULL;
 	char** L = NULL;
 	int n;
+	float t;
 	El* Q = NULL;
 	FILE* F;
 	char name[] = "Settings.txt", lab[31];
 
 	if ((F = fopen(name, "r")) == NULL)
 	{
-		F = fopen(name, "w");
 		stand();
 	}
 	F = fopen(name, "r");
@@ -51,12 +51,15 @@ void start()
 			}
 			fseek(F, 1, SEEK_CUR);
 		}
-		fclose(F);
 		n = sqrt(N);
 	}
+	fclose(F);
+	F = fopen(name, "r");
+	fseek(F, -1, SEEK_END);
+	fscanf(F, "%f", &t);
 	fclose(F);
 	L = Lgen(M, n);
 	Q = put(M, n * n, Q);
 	print_L(L, n * 2 + 1);
-	HZ(L, Q, n, M);
+	HZ(L, Q, n, M, t/2);
 }

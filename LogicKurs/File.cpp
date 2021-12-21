@@ -8,7 +8,8 @@ void stand()
 	F = fopen(name, "w+");
 
 	fprintf(F, "Размер лабиринта = %d          \n", 5);
-	fprintf(F, "Лабиринт = -                                                  ");
+	fprintf(F, "Лабиринт = -                                  \n");
+	fprintf(F, "Сложность = %d", 1);
 	fclose(F);
 }
 
@@ -38,3 +39,17 @@ void save(char* lab, int N, int** M)
 	fclose(F);
 }
 
+void sloj(int k)
+{
+	FILE* F;
+	char name[] = "Settings.txt";
+
+	if ((F = fopen(name, "r")) == NULL)
+	{
+		stand();
+	}
+	F = fopen(name, "r+");
+	fseek(F, -1, SEEK_END);
+	fprintf(F, "%d", k);
+	fclose(F);
+}

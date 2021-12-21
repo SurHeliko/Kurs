@@ -22,9 +22,25 @@ void set(int i, char* m)
 	m[i] = '>';
 	m[i + 1] = '<';
 	printf("\n\n\n\n");
+	printf("      ______________            _______________            _______________            _______________      \n");
+	printf("     |              |          |               |          |               |          |               |     \n");
+	printf("   %c |    Размер    | %c      %c |    Лабиринт   | %c      %c |   Сложность   | %c      %c |     Сброс     | %c\n", m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7]);
+	printf("     |______________|          |_______________|          |_______________|          |_______________|     \n");
+	printf("\n\n\n\n\n\n\n");
+	printf("Стрелки - Перемещение; 1 - Выбор; 2 - Выход");
+	m[i] = ' ';
+	m[i + 1] = ' ';
+}
+
+void seti(int i, char* m)
+{
+	system("cls");
+	m[i] = '>';
+	m[i + 1] = '<';
+	printf("\n\n\n\n");
 	printf("      ______________            _______________            _______________      \n");
 	printf("     |              |          |               |          |               |     \n");
-	printf("   %c |    Размер    | %c      %c |    Лабиринт   | %c      %c |     Сброс     | %c   \n", m[0], m[1], m[2], m[3], m[4], m[5]);
+	printf("   %c |     Легко    | %c      %c |    Нормально  | %c      %c |     Тяжело    | %c   \n", m[0], m[1], m[2], m[3], m[4], m[5]);
 	printf("     |______________|          |_______________|          |_______________|     \n");
 	printf("\n\n\n\n\n\n\n");
 	printf("Стрелки - Перемещение; 1 - Выбор; 2 - Выход");
@@ -80,10 +96,27 @@ void lab()
 	fputs(lab, F);
 	fclose(F);
 }
+void dvigat_2();
+void dvigat_3()
+{
+	char m[6] = { ' ',' ',' ',' ',' ',' ' };
+	int i = 0, k = 0, n;
+	seti(i, m);
+	while (k == 0)
+	{
+		switch (_getch())
+		{
+		case 75: if (i != 0) i = i - 2; seti(i, m); break;
+		case 77: if (i != 4) i = i + 2; seti(i, m); break;
+		case 49: if (i == 0) sloj(3); if (i == 2) sloj(2); if (i == 4) sloj(1); break;
+		case 50: dvigat_2();
+		}
+	}
+}
 
 void dvigat_2()
 {
-	char m[6] = { ' ',' ',' ',' ',' ',' ' };
+	char m[8] = { ' ',' ',' ',' ',' ',' ',' ',' ' };
 	int i = 0, k = 0, n;
 	set(i, m);
 	while (k == 0)
@@ -91,8 +124,8 @@ void dvigat_2()
 		switch (_getch())
 		{
 		case 75: if (i != 0) i = i - 2; set(i, m); break;
-		case 77: if (i != 4) i = i + 2; set(i, m); break;
-		case 49: if (i == 0) raz(); if (i == 2) lab(); if (i == 4) stand(); break;
+		case 77: if (i != 6) i = i + 2; set(i, m); break;
+		case 49: if (i == 0) raz(); if (i == 2) lab(); if (i == 6) stand(); if (i == 4) dvigat_3(); break;
 		case 50: dvigat_1();
 		}
 	}

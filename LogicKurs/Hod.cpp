@@ -93,7 +93,7 @@ El* put(int** M, int n, El* Q)
 	return Q;
 }
 
-void HZ(char** L, El* Q, int n, int** M)
+void HZ(char** L, El* Q, int n, int** M, float hod)
 {
 	int i = 0, j = 0, x = 1, y = 1, N = n*2+1, win = 0;
 	clock_t S, E = 0;
@@ -113,7 +113,7 @@ void HZ(char** L, El* Q, int n, int** M)
 		i = Q->v % n;
 		Q = del(Q);
 		S = clock();
-		while ((E-S)/CLK_TCK < 1)
+		while (float(E-S)/CLK_TCK < hod)
 		{
 			E = clock();
 			if (_kbhit() == 1)
@@ -126,6 +126,11 @@ void HZ(char** L, El* Q, int n, int** M)
 					L[y][x] = '#';
 					system("cls");
 					print_L(L, n * 2 + 1);
+					if (L[N - 2][N - 2] == '#')
+					{
+						win = 1;
+						break;
+					}
 				} break;
 				case 75: if (L[y][x - 1] != '0')
 				{
@@ -134,6 +139,11 @@ void HZ(char** L, El* Q, int n, int** M)
 					L[y][x] = '#';
 					system("cls");
 					print_L(L, n * 2 + 1);
+					if (L[N - 2][N - 2] == '#')
+					{
+						win = 1;
+						break;
+					}
 				} break;
 				case 80: if (L[y + 1][x] != '0')
 				{
@@ -142,6 +152,11 @@ void HZ(char** L, El* Q, int n, int** M)
 					L[y][x] = '#';
 					system("cls");
 					print_L(L, n * 2 + 1);
+					if (L[N - 2][N - 2] == '#')
+					{
+						win = 1;
+						break;
+					}
 				} break;
 				case 77: if (L[y][x + 1] != '0')
 				{
@@ -150,6 +165,11 @@ void HZ(char** L, El* Q, int n, int** M)
 					L[y][x] = '#';
 					system("cls");
 					print_L(L, n * 2 + 1);
+					if (L[N - 2][N - 2] == '#')
+					{
+						win = 1;
+						break;
+					}
 				} break;
 				case 49:
 				{
@@ -160,9 +180,8 @@ void HZ(char** L, El* Q, int n, int** M)
 				}break;
 				}
 		}
-		if (L[N - 2][N - 2] == '#')
+		if (win == 1)
 		{
-			win = 1;
 			break;
 		}
 	}
